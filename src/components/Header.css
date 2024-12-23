@@ -1,0 +1,50 @@
+/* Header css */
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e9a2ad;
+  padding: 0.2rem;
+  text-align: left;
+  font-weight: bold;
+  color: white;
+  padding-left: 2rem;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  align-items: center; /* Vertically centers email and buttons */
+}
+
+.user-info {
+  display: flex;
+  align-items: center; /* Vertically centers text and button */
+}
+
+/* .user-info span {
+  margin-right: 0.5rem; 
+} */
+
+.interspace {
+  margin: 0 0.7rem 0 0.7rem;
+}
+
+.btnLogin-Logout {
+  background-color: transparent;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  padding: 0.2rem 0.5rem 0 0.4rem;
+}
+
+.login-button {
+  margin-left: 0.5rem; /* Space for login button when not logged in */
+  margin-right: 2rem;
+}

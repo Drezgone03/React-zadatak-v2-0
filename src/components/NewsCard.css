@@ -1,0 +1,83 @@
+/* Each NewsCard */
+.news-card {
+  width: 300px; /* Fixed width for all cards */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  min-height: 30px;
+}
+
+/* Trending badge */
+.trending-badge {
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+/* News Image Section */
+.news-image {
+  width: 100%;
+  height: 150px;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.image-line {
+  border: 1px solid #9eadba;
+  margin: 8px 12px;
+}
+
+.news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image is scaled and cropped properly */
+  margin: 12px;
+  overflow: hidden;
+}
+
+/* News Title */
+.news-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin: 12px;
+  flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+/* Open Button */
+.open-btn {
+  background-color: transparent;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  padding: 6px 40px;
+  border-radius: 4px;
+  margin: 10px auto;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.open-btn:hover {
+  background-color: #e74c3c;
+  color: white;
+}
