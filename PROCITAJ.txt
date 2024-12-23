@@ -1,5 +1,0 @@
-
-  Da bi se app pokrenula potrebno je da radi na starijoj verziji node.js 15.14.0
-
-  Izbacuje gresku, tek kada ubacim db u src folder, onda radi, 
-  e sad ne znam da li to moze da utice na ovaj drugi kod...
