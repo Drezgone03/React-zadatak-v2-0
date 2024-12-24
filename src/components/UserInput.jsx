@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./UserInput.css";
+import { useHistory } from "react-router-dom";
 
 export default function UserInput({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -9,10 +10,9 @@ export default function UserInput({ onLogin }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  // const navigate = useNavigation();
+  const history = useHistory();
 
   function validateEmail(email) {
-    // const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const regex = /^[^\s@]+@[^\s@0-9][^\s@]*\.[a-zA-Z]{2,}$/;
     return regex.test(email);
   }
@@ -42,6 +42,7 @@ export default function UserInput({ onLogin }) {
   }
 
   async function handleSubmit(e) {
+    console.log("adgagag");
     e.preventDefault();
     if (isFormValid()) {
       setIsLoading(true); // spiner true- when request starts
@@ -63,8 +64,15 @@ export default function UserInput({ onLogin }) {
 
         const data = await response.json();
         console.log("Login successful with token: ", data.token);
-        onLogin(email);
-        // navigate('/all');
+        // ovo izbacujemo, posto vise ne pozivamo tu funkciju u App.js
+        // onLogin(email);
+        // ova linija ispod je dodatak da bi dispatchovao neki evenet, u ovom slucaju hocemo da znamo da nam se user email update-vao da bi mogli promenuti u komponenti Header tekst sa login na logout i dodati email
+        window.dispatchEvent(new Event("userUpdate"));
+        // local storage dodajemo da bi imali negde u sacuvan user email....kasnije kad krenes da radis posle logina obicno ubacuje u neki state management (Redux, ContextAPI itd)
+        localStorage.setItem("userEmail", email);
+        // local storage ces koristiti bas cesto, to ti je skladistenje u memoriju kompa/browsera/telefona
+        // i onda ovamo redirektujemo usera na stranicu sa novinama
+        history.push("/all");
       } catch (error) {
         console.error(error);
         setIsLoading(false); // spiner - false, on error
@@ -81,17 +89,14 @@ export default function UserInput({ onLogin }) {
 
   return (
     <section>
-      {/* Popup Message */}
       {isPopupVisible && (
         <div className="popup">
           <p>{errorMessage}</p>
           <button onClick={dismissPopup}>X</button>
         </div>
       )}
-      {/* Login form */}
       <div className="input-container">
         <form className="input-form" onSubmit={handleSubmit}>
-          {/* Loading spinner */}
           {isLoading && <div className="loading-spinner"></div>}
           <h2>Login</h2>
           <p>

@@ -1,13 +1,13 @@
 import React from "react";
 import "./NewsCard.css";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function NewsCard({ newsItem }) {
-  const navigate = useNavigate();
+  const history = useHistory();
 
   function handleSingleNews(id) {
     console.log("id", id);
-    navigate(`/${id}`);
+    history.push(`/${id}`);
   }
 
   return (
