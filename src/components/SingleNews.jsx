@@ -97,7 +97,7 @@ export default function SingleNews() {
         <button className="comment-btn">Add Comment</button>
       </div>
       {/* srediti kod dole za komentare */}
-      <ul className="comments-list">
+      {/* <ul className="comments-list">
         {singleNews.comments?.map((comment, index) => (
           <li key={index} className="comment">
             <p>
@@ -107,6 +107,39 @@ export default function SingleNews() {
             <p className="comment-date">{comment.date}</p>
           </li>
         ))}
+      </ul> */}
+      <ul className="comments-list">
+        <li className="comment">
+          <div className="comment-container">
+            <p>
+              <strong>John Doe</strong>
+            </p>
+            <p className="comment-date">
+              <strong> Oct 6 2019</strong>
+            </p>
+          </div>
+          <p className="comment-txt">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown.
+          </p>
+        </li>
+        {/*  */}
+        <li className="comment">
+          <div className="comment-container">
+            <p>
+              <strong>John Doe</strong>
+            </p>
+            <p className="comment-date">
+              <strong> Oct 5 2019</strong>
+            </p>
+          </div>
+          <p className="comment-txt">
+            Lorem Ipsum has been the industry's standard dummy text ever since
+            the 1500s, Lorem Ipsum is simply dummy text of the printing and
+            typesetting.
+          </p>
+        </li>
       </ul>
     </div>
   );
