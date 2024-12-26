@@ -8,7 +8,7 @@ export default function SearchBar({ onSearch }) {
   const handleSearch = useCallback(
     debounce((searchValue) => {
       onSearch(searchValue);
-    }, 500),
+    }, 2000),
     []
   );
 

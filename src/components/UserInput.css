@@ -46,6 +46,7 @@
   border-radius: 3px;
   background-color: transparent;
   color: #d3455b;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
 }

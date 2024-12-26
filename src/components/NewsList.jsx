@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NewsCard from "./NewsCard.jsx";
+import SearchBar from "./SearchBar.jsx";
 import "./NewsList.css";
 
 export default function NewsList() {
@@ -39,10 +40,13 @@ export default function NewsList() {
   }
 
   return (
-    <div className="news-list-container">
-      {news.map((news) => (
-        <NewsCard newsItem={news} key={news.id} />
-      ))}
+    <div>
+      <SearchBar onSearch={fetchNews} />
+      <div className="news-list-container">
+        {news.map((news) => (
+          <NewsCard newsItem={news} key={news.id} />
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,89 @@
+.single-news-container {
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  /* border: 1px solid #ddd; */
+  border-radius: 8px;
+}
+
+.single-news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #9eadba; /* line top */
+}
+
+.single-news-header h1 {
+  font-size: 21px;
+  color: #55616e;
+  width: 80%;
+}
+
+.like-btn {
+  padding: 0.45rem 2.2rem;
+  border: 1px solid #d3455b;
+  border-radius: 2px;
+  background-color: transparent;
+  color: #d3455b;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.news-image-container img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin: 20px 0;
+}
+
+.news-text {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.comments-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-bottom: 2px solid #9eadba; /* line bottom */
+}
+
+.comments-section h2 {
+  font-size: 18px;
+  color: #788896;
+  margin-bottom: 10px;
+}
+
+.comment-btn {
+  padding: 8px 18px;
+  margin: 10px 0px;
+  border: 1px solid #d3455b;
+  border-radius: 2px;
+  background-color: transparent;
+  color: #d3455b;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ovaj dole CSS za komentare, jos nisam sredio kod u jsx */
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #999;
+}
