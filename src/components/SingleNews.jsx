@@ -54,6 +54,9 @@ export default function SingleNews() {
   const { newsId } = useParams();
   const [loading, setLoading] = useState(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLiked, setIsLiked] = useState(false);
+
   useEffect(() => {
     if (newsId) fetchSingleNews();
   }, [newsId]);
@@ -72,6 +75,29 @@ export default function SingleNews() {
     }
   }
 
+  async function toggleLike() {
+    if (!isLoggedIn) return; // Ako nije prijavljen, ništa ne radimo
+
+    try {
+      const method = isLiked ? "DELETE" : "POST"; // DELETE za "Unlike", POST za "Like"
+      const response = await fetch(
+        `http://localhost:3001/news/${newsId}/action/like`,
+        {
+          method,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId: newsId }), // Prosledite ID korisnika
+        }
+      );
+      console.log("Response:", response);
+
+      if (!response.ok) throw new Error("Failed to toggle like");
+      // Ažurirajte stanje samo ako je zahtev uspešan
+      setIsLiked((prev) => !prev);
+    } catch (error) {
+      console.error("Error toggling like:", error);
+    }
+  }
+
   if (loading) {
     return <div className="loading-spinner"></div>;
   }
@@ -84,9 +110,12 @@ export default function SingleNews() {
     <div className="single-news-container">
       <header className="single-news-header">
         <h1>{singleNews.title}</h1>
-        {/* <div> */}
-        <button className="like-btn">Like</button>
-        {/* </div> */}
+
+        {isLoggedIn && (
+          <button className="like-btn" onClick={toggleLike}>
+            {isLiked ? "Unlike" : "Like"}
+          </button>
+        )}
       </header>
       <div className="news-image-container">
         <img src={singleNews.imageUrl} alt={singleNews.title} />
@@ -94,20 +123,8 @@ export default function SingleNews() {
       <p className="news-text">{singleNews.text}</p>
       <div className="comments-section">
         <h2>Comments</h2>
-        <button className="comment-btn">Add Comment</button>
+        {isLoggedIn && <button className="comment-btn">Add Comment</button>}
       </div>
-      {/* srediti kod dole za komentare */}
-      {/* <ul className="comments-list">
-        {singleNews.comments?.map((comment, index) => (
-          <li key={index} className="comment">
-            <p>
-              <strong>{comment.author}</strong>
-            </p>
-            <p>{comment.text}</p>
-            <p className="comment-date">{comment.date}</p>
-          </li>
-        ))}
-      </ul> */}
       <ul className="comments-list">
         <li className="comment">
           <div className="comment-container">
@@ -124,11 +141,11 @@ export default function SingleNews() {
             ever since the 1500s, when an unknown.
           </p>
         </li>
-        {/*  */}
+
         <li className="comment">
           <div className="comment-container">
             <p>
-              <strong>John Doe</strong>
+              <strong>Jane Doe</strong>
             </p>
             <p className="comment-date">
               <strong> Oct 5 2019</strong>
